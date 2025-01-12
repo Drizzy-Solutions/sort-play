@@ -6,15 +6,10 @@
     return;
   }
 
-    
   const { PlaylistAPI } = Platform;
-  const DefaultGeminiApiKeys = [
-    "AIzaSyCtFhlOZ4iCMZr99L4Hmuw37UiylLu_ixA",
-    "AIzaSyBE5kiwxoTSnrFGPADy-2KbbAU0UAMdA8A",
-    "AIzaSyC9S9ldRjODdbZISA2zF2zP0B4u3hO4oJA",
-    "AIzaSyDdnafLGTpTzEMBugzopamcSI-i58UDHc0"
-  ];
+
   const LFMApiKey = "273082d1b5a28d1deebe5f5ebfd7211b";
+  
   const STORAGE_KEY_LASTFM_USERNAME = "sort-play-lastfm-username";
 
   let columnPlayCount = false;
@@ -60,7 +55,13 @@
     localStorage.setItem(STORAGE_KEY_USER_SYSTEM_INSTRUCTION, userSystemInstruction);
     localStorage.setItem("sort-play-include-various-artists", includeVariousArtists);  
   }
-
+  const DefaultGeminiApiKeys = [
+    "AIzaSyCtFhlOZ4iCMZr99L4Hmuw37UiylLu_ixA",
+    "AIzaSyBE5kiwxoTSnrFGPADy-2KbbAU0UAMdA8A",
+    "AIzaSyC9S9ldRjODdbZISA2zF2zP0B4u3hO4oJA",
+    "AIzaSyDdnafLGTpTzEMBugzopamcSI-i58UDHc0"
+  ];
+  
   function getRandomDefaultApiKey() {
     const randomIndex = Math.floor(Math.random() * DefaultGeminiApiKeys.length);
     return DefaultGeminiApiKeys[randomIndex];
