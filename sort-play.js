@@ -2843,7 +2843,7 @@
   
   const CONFIG = {
     batchSize: 5,
-    batchDelay: 100,
+    batchDelay: 200,
     lastfm: {
       apiKey: '273082d1b5a28d1deebe5f5ebfd7211b',
       baseUrl: 'https://ws.audioscrobbler.com/2.0/',
