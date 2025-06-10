@@ -12,7 +12,7 @@
     return;
   }
 
-  const SORT_PLAY_VERSION = "4.3.5";
+  const SORT_PLAY_VERSION = "4.4.0";
   
   const LFMApiKey = "273082d1b5a28d1deebe5f5ebfd7211b";
   
