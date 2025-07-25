@@ -14,7 +14,7 @@
 
   const SORT_PLAY_VERSION = "5.1.6";
 
-  const LFMApiKey = "273082d1b5a28d1deebe5f5ebfd7211b";
+  const LFMApiKey = "fc3aa61fb967eaaec313624933d267bd";
   let isProcessing = false;
   let showAdditionalColumn = false;
   let selectedColumnType = 'playCount';
@@ -7824,7 +7824,7 @@
     batchSize: 5,
     batchDelay: 200,
     lastfm: {
-      apiKey: '273082d1b5a28d1deebe5f5ebfd7211b',
+      apiKey: 'fc3aa61fb967eaaec313624933d267bd',
       baseUrl: 'https://ws.audioscrobbler.com/2.0/',
       retryAttempts: 3,
       retryDelay: 1000,
