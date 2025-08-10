@@ -12,9 +12,8 @@
     return;
   }
 
-  const SORT_PLAY_VERSION = "5.1.16";
-
-  const LFMApiKey = "fc3aa61fb967eaaec313624933d267bd";
+  const SORT_PLAY_VERSION = "5.1.17";
+  
   let isProcessing = false;
   let showAdditionalColumn = false;
   let selectedColumnType = 'playCount';
@@ -66,6 +65,30 @@
   const STORAGE_KEY_SET_DEDICATED_PLAYLIST_COVERS = "sort-play-set-dedicated-playlist-covers";
 
 
+
+  const L_F_M_Key_Pool = [
+    "fc3aa61fb967eaaec313624933d267bd",
+    "273082d1b5a28d1deebe5f5ebfd7211b",
+    "44654ea047786d90338c17331a5f5d95",
+    "f1dfe2dbca47ebc1f00adcb036b5de49"
+  ];
+
+  function L_F_M_Key() {
+    const randomIndex = Math.floor(Math.random() * L_F_M_Key_Pool.length);
+    return L_F_M_Key_Pool[randomIndex];
+  }
+
+  const Ge_mini_Key_Pool = [
+    "AIzaSyCtFhlOZ4iCMZr99L4Hmuw37UiylLu_ixA",
+    "AIzaSyBE5kiwxoTSnrFGPADy-2KbbAU0UAMdA8A",
+    "AIzaSyC9S9ldRjODdbZISA2zF2zP0B4u3hO4oJA",
+    "AIzaSyDdnafLGTpTzEMBugzopamcSI-i58UDHc0"
+  ];
+  
+  function Ge_mini_Key() {
+    const randomIndex = Math.floor(Math.random() * Ge_mini_Key_Pool.length);
+    return Ge_mini_Key_Pool[randomIndex];
+  }
 
 
   const DEDICATED_PLAYLIST_COVERS = {
@@ -339,17 +362,6 @@
     }
   }
 
-  const DefaultGeminiApiKeys = [
-    "AIzaSyCtFhlOZ4iCMZr99L4Hmuw37UiylLu_ixA",
-    "AIzaSyBE5kiwxoTSnrFGPADy-2KbbAU0UAMdA8A",
-    "AIzaSyC9S9ldRjODdbZISA2zF2zP0B4u3hO4oJA",
-    "AIzaSyDdnafLGTpTzEMBugzopamcSI-i58UDHc0"
-  ];
-  
-  function getRandomDefaultApiKey() {
-    const randomIndex = Math.floor(Math.random() * DefaultGeminiApiKeys.length);
-    return DefaultGeminiApiKeys[randomIndex];
-  }
   
   let googleAiSdk = null;
   async function loadGoogleAI() {
@@ -2962,7 +2974,7 @@
       mainButton.innerHTML = '<div class="loader"></div>';
   
       try {
-        const userApiKey = localStorage.getItem("sort-play-gemini-api-key") || getRandomDefaultApiKey();
+        const userApiKey = localStorage.getItem("sort-play-gemini-api-key") || Ge_mini_Key();
   
         selectedAiModel = modelSelect.value; 
   
@@ -9490,7 +9502,7 @@
 
         const encodedArtist = encodeURIComponent(artistName);
         const encodedTrack = encodeURIComponent(trackName);
-        const lastFmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${LFMApiKey}&artist=${encodedArtist}&track=${encodedTrack}&format=json`;
+        const lastFmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${L_F_M_Key()}&artist=${encodedArtist}&track=${encodedTrack}&format=json`;
 
         const response = await fetch(lastFmUrl);
 
@@ -9583,7 +9595,7 @@
 
         const encodedArtist = encodeURIComponent(artistName);
         const encodedTrack = encodeURIComponent(track.name);
-        const lastFmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${LFMApiKey}&artist=${encodedArtist}&track=${encodedTrack}&username=${username}&format=json`;
+        const lastFmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${L_F_M_Key()}&artist=${encodedArtist}&track=${encodedTrack}&username=${username}&format=json`;
         
         const response = await fetch(lastFmUrl);
 
@@ -10004,7 +10016,7 @@
         onClick: async function (event) {
           event.stopPropagation();
           const userApiKey = localStorage.getItem("sort-play-gemini-api-key");
-          if (!userApiKey || DefaultGeminiApiKeys.includes(userApiKey)) {  
+          if (!userApiKey || Ge_mini_Key_Pool.includes(userApiKey)) {  
             showDefaultApiKeyWarning();
           } else {
             menuButtons.forEach((btn) => {
